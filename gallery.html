@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="gallery.css">
+</head>
+<body>
+    
+    
+        <div class="panels">
+            <div class="panel panel1">
+                <p class="top">Hey</p>
+                <p class="middle">Let's</p>
+                <p class="bottom">Dance</p>
+            </div>
+            <div class="panel panel2">
+                <p class="top">Give</p>
+                <p class="middle">Take</p>
+                <p class="bottom">Receive</p>
+            </div>
+            <div class="panel panel3">
+                <p class="top">Experience</p>
+                <p class="middle">It</p>
+                <p class="bottom">Today</p>
+            </div>
+            <div class="panel panel4">
+                <p class="top">Give</p>
+                <p class="middle">All</p>
+                <p class="bottom">You Can</p>
+            </div>
+            <div class="panel panel5">
+                <p class="top">Life</p>
+                <p class="middle">In</p>
+                <p class="bottom">Motion</p>
+            </div>
+        </div>
+  
+    <script >
+        const panels = document.querySelectorAll('.panel');
+const mediaQuery = window.matchMedia('(max-width: 610px)');
+
+panels.forEach(panel => {
+    panel.addEventListener('click', () => {
+        const isOpen = panel.classList.contains('open');
+
+        panels.forEach(p => {
+						panels.forEach(p => p.classList.remove('open'));
+            const middle = p.querySelector('.middle');
+            const top = p.querySelector('.top');
+            const bottom = p.querySelector('.bottom');
+
+            if (top) {
+                top.style.transform = mediaQuery.matches ? 'translateX(-50vw)' : 'translateY(-50vh)';
+            }
+
+            if (middle) {
+                middle.style.fontSize = '4rem';
+            }
+
+            if (bottom) {
+                bottom.style.transform = mediaQuery.matches ? 'translateX(40vw)' : 'translateY(50vh)';
+            }
+        });
+
+        if (!isOpen) {
+            panel.classList.add('open');
+
+            const top = panel.querySelector('.top');
+            const middle = panel.querySelector('.middle');
+            const bottom = panel.querySelector('.bottom');
+
+            if (top) {
+                top.style.transform = mediaQuery.matches ? 'translateX(0px)' : 'translateY(0px)';
+                top.style.fontSize = '3rem';
+            }
+
+            if (middle) {
+                middle.style.fontSize = mediaQuery.matches ? '4.5rem' : '5.5rem';
+            }
+
+            if (bottom) {
+                bottom.style.transform = mediaQuery.matches ? 'translateX(0px)' : 'translateY(0px)';
+                bottom.style.fontSize = '3rem';
+            }
+        }
+    });
+});
+    </script>
+</body>
+</html>
